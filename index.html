@@ -20,7 +20,7 @@
       justify-content: flex-start;
       min-height: 100vh;
       text-align: center;
-      overflow-x: hidden;
+      overflow: hidden;
       position: relative;
     }
 
@@ -32,7 +32,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       margin-top: 60px;
       margin-bottom: 20px;
-      z-index: 1;
+      z-index: 10;
     }
 
     h1 {
@@ -40,7 +40,7 @@
       font-size: 2rem;
       margin: 0;
       padding: 0 10px;
-      z-index: 1;
+      z-index: 10;
     }
 
     p {
@@ -48,17 +48,17 @@
       font-size: 1.1rem;
       margin-top: 10px;
       padding: 0 15px;
-      z-index: 1;
+      z-index: 10;
     }
 
     .heart {
-      position: fixed;
+      position: absolute;
       width: 20px;
       height: 20px;
       background-color: #e91e63;
       transform: rotate(45deg);
       animation: floatUp 10s linear infinite;
-      z-index: 0;
+      z-index: 1;
     }
 
     .heart::before,
@@ -83,21 +83,19 @@
 
     @keyframes floatUp {
       0% {
-        bottom: -60px;
+        transform: translateY(0) scale(1);
         opacity: 1;
-        transform: translateX(0) scale(1);
       }
       100% {
-        bottom: 110%;
+        transform: translateY(-120vh) scale(0.5);
         opacity: 0;
-        transform: translateX(40px) scale(0.5);
       }
     }
   </style>
 </head>
 <body>
 
-  <img src=photo_6057720053392066090_y.jpg alt="Us together" />
+  <img src=photo_6057720053392066090_y.jpg />
 
   <h1>Happy first Monthsary babe</h1>
   <p>Always yours, now and forever &lt;3</p>
@@ -108,6 +106,7 @@
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.top = '100vh'; // Start from bottom of screen
       heart.style.animationDuration = (6 + Math.random() * 4) + 's';
       heart.style.opacity = Math.random();
       heart.style.transform = `rotate(45deg) scale(${0.5 + Math.random()})`;
@@ -118,7 +117,6 @@
       }, 10000);
     }
 
-    // Create hearts more frequently on mobile for visibility
     setInterval(createHeart, 250);
   </script>
 </body>
