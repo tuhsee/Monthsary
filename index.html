@@ -17,6 +17,7 @@
       height: 100vh;
       overflow: hidden;
       position: relative;
+      text-align: center;
     }
 
     img {
@@ -31,6 +32,14 @@
     h1 {
       color: #d81b60;
       font-size: 2.5rem;
+      margin: 0;
+      z-index: 1;
+    }
+
+    p {
+      color: #880e4f;
+      font-size: 1.25rem;
+      margin-top: 10px;
       z-index: 1;
     }
 
@@ -79,11 +88,13 @@
 </head>
 <body>
 
-  <!-- Replace 'us.jpg' with your image -->
-  <img src=photo_6057720053392066090_y.jpg alt="Us together" />
-  <h1>Happy 1st Monthsary my Love</h1>
+  <!-- Replace 'us.jpg' with your actual image -->
+  <img src=photo_6057720053392066090_y.jpg />
 
-  <!-- JavaScript for generating floating hearts -->
+  <h1>Happy first Monthsary babe</h1>
+  <p>Always yours, now and forever &lt;3</p>
+
+  <!-- JavaScript to generate floating hearts -->
   <script>
     function createHeart() {
       const heart = document.createElement('div');
@@ -92,14 +103,3 @@
       heart.style.animationDuration = (5 + Math.random() * 5) + 's';
       heart.style.opacity = Math.random();
       heart.style.transform = `rotate(45deg) scale(${0.5 + Math.random()})`;
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 10000);
-    }
-
-    setInterval(createHeart, 300);
-  </script>
-</body>
-</html>
