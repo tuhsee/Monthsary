@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Monthsary</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fce4ec;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+      position: relative;
+    }
+
+    img {
+      max-width: 90%;
+      max-height: 70vh;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-bottom: 20px;
+      z-index: 1;
+    }
+
+    h1 {
+      color: #d81b60;
+      font-size: 2.5rem;
+      z-index: 1;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #e91e63;
+      transform: rotate(45deg);
+      animation: floatUp 10s linear infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #e91e63;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatUp {
+      0% {
+        bottom: -50px;
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+      100% {
+        bottom: 110%;
+        opacity: 0;
+        transform: translateX(100px) scale(0.5);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Replace 'us.jpg' with your image -->
+  <img src=""photo_6057720053392066090_y.jpg"" alt="Us together" />
+  <h1>Happy 1st Monthsary my Love</h1>
+
+  <!-- JavaScript for generating floating hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.style.opacity = Math.random();
+      heart.style.transform = `rotate(45deg) scale(${0.5 + Math.random()})`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+</body>
+</html>
