@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Monthsary</title>
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       margin: 0;
       padding: 0;
@@ -13,43 +17,48 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-      position: relative;
+      justify-content: flex-start;
+      min-height: 100vh;
       text-align: center;
+      overflow-x: hidden;
+      position: relative;
     }
 
     img {
-      max-width: 90%;
-      max-height: 70vh;
+      width: 90%;
+      max-width: 500px;
+      height: auto;
       border-radius: 20px;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      margin-top: 60px;
       margin-bottom: 20px;
       z-index: 1;
     }
 
     h1 {
       color: #d81b60;
-      font-size: 2.5rem;
+      font-size: 2rem;
       margin: 0;
+      padding: 0 10px;
       z-index: 1;
     }
 
     p {
       color: #880e4f;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       margin-top: 10px;
+      padding: 0 15px;
       z-index: 1;
     }
 
     .heart {
-      position: absolute;
+      position: fixed;
       width: 20px;
       height: 20px;
       background-color: #e91e63;
       transform: rotate(45deg);
       animation: floatUp 10s linear infinite;
+      z-index: 0;
     }
 
     .heart::before,
@@ -74,22 +83,21 @@
 
     @keyframes floatUp {
       0% {
-        bottom: -50px;
+        bottom: -60px;
         opacity: 1;
         transform: translateX(0) scale(1);
       }
       100% {
         bottom: 110%;
         opacity: 0;
-        transform: translateX(100px) scale(0.5);
+        transform: translateX(40px) scale(0.5);
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Replace 'us.jpg' with your actual image -->
-  <img src=photo_6057720053392066090_y.jpg />
+  <img src=photo_6057720053392066090_y.jpg alt="Us together" />
 
   <h1>Happy first Monthsary babe</h1>
   <p>Always yours, now and forever &lt;3</p>
@@ -100,6 +108,18 @@
       const heart = document.createElement('div');
       heart.classList.add('heart');
       heart.style.left = Math.random() * 100 + 'vw';
-      heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
       heart.style.opacity = Math.random();
       heart.style.transform = `rotate(45deg) scale(${0.5 + Math.random()})`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    // Create hearts more frequently on mobile for visibility
+    setInterval(createHeart, 250);
+  </script>
+</body>
+</html>
